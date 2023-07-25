@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vale Apena Mesmo? (Ter média 250)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .checkbox {
+            margin-bottom: 10px;
+        }
+        .resultado {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .nunca {
+            background-color: red;
+        }
+        .talvez {
+            background-color: orange;
+        }
+        .provavelmente {
+            background-color: yellow;
+        }
+        .comCerteza {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vale Apena Mesmo? (Ter média 100)</h1>
+    <div class="checkbox">
+        <input type="checkbox" id="baixinha" value="30">
+        <label for="baixinha">Baixinha? +30</label>
+    </div>
+    <div class="checkbox">
+        <input type="checkbox" id="morenaClara" value="10">
+        <label for="morenaClara">Morena clara? +10</label>
+    </div>
+     <div class="checkbox">
+        <input type="checkbox" id="loira" value="30">
+        <label for="loira">Loira? +30</label>
+    </div>
+    <div class="checkbox">
+        <input type="checkbox" id="demoraPraResponder" value="-20">
+        <label for="demoraPraResponder">Demora pra responder? -20</label>
+    </div>
+    <div class="checkbox">
+        <input type="checkbox" id="cheirosa" value="30">
+        <label for="cheirosa">Cheirosa? +30</label>
+    </div>
+    <div class="checkbox">
+        <input type="checkbox" id="fumaCigarro" value="-50">
+        <label for="fumaCigarro">Fuma cigarro? -50</label>
+    </div>
+    <div class="checkbox">
+        <input type="checkbox" id="fumaVape" value="-10">
+        <label for="fumaVape">Fuma Vape? -10</label>
+    </div>
+    <div class="checkbox">
+        <input type="checkbox" id="bebeAlcool" value="-10">
+        <label for="bebeAlcool">Bebe alcool? -10</label>
+    </div>
+    <div class="checkbox">
+        <input type="checkbox" id="jogadoraDeVolei" value="20">
+        <label for="jogadoraDeVolei">Jogadora de volei? +20</label>
+    </div>
+    <div class="checkbox">
+        <input type="checkbox" id="ratinhaDeAcademia" value="40">
+        <label for="ratinhaDeAcademia">Ratinha de academia? +40</label>
+    </div>
+    <div class="checkbox">
+        <input type="checkbox" id="visaoDeFuturo" value="20">
+        <label for="visaoDeFuturo">Visao de futuro? +20</label>
+    </div>
+    <div class="checkbox">
+        <input type="checkbox" id="trataBemOsPais" value="20">
+        <label for="trataBemOsPais">Trata bem os pais? +20</label>
+    </div>
+    <div class="checkbox">
+        <input type="checkbox" id="temMelhorAmigo" value="-40">
+        <label for="temMelhorAmigo">Tem melhor amigo? -40</label>
+    </div>
+    <div class="checkbox">
+        <input type="checkbox" id="fiel" value="30">
+        <label for="fiel">Fiel? +30</label>
+    </div>
+    <div class="checkbox">
+        <input type="checkbox" id="sofrePorEx" value="-20">
+        <label for="sofrePorEx">Sofre por Ex? -20</label>
+    </div>
+    <div class="checkbox">
+        <input type="checkbox" id="gorda" value="-200">
+        <label for="gorda">Gorda? -200</label>
+    </div>
+    <div class="checkbox">
+        <input type="checkbox" id="bolsonaro22" value="30">
+        <label for="bolsonaro22">Se for Bolsonaro 22? +30</label>
+    </div>
+    <div class="checkbox">
+        <input type="checkbox" id="humorNegro" value="40">
+        <label for="humorNegro">Tem humor negro? +40</label>
+    </div>
+    <div class="checkbox">
+        <input type="checkbox" id="catolica" value="50">
+        <label for="catolica">É católica? +50</label>
+    </div>
+    <div class="checkbox">
+        <input type="checkbox" id="petista" value="-30">
+        <label for="petista">É petista? -30</label>
+    <div>
+        <button onclick="calcularResultado()">Calcular Resultado</button>
+    </div>
+    
+    <div class="resultado nunca" id="nuncaResultado">Nunca</div>
+    <div class="resultado talvez" id="talvezResultado">Talvez</div>
+    <div class="resultado provavelmente" id="provavelmenteResultado">Provavelmente</div>
+    <div class="resultado comCerteza" id="comCertezaResultado">Com Certeza</div>
+    
+    <div class="assinatura">
+        <p>Feito pelo Rafael Miguel</p>
+        <p>😃 &#x1F91A;</p>
+    </div>
+
+    <script>
+        function calcularResultado() {
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            var totalPontos = 0;
+
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    totalPontos += parseInt(checkboxes[i].value);
+                }
+            }
+
+            var nuncaResultado = document.getElementById('nuncaResultado');
+            var talvezResultado = document.getElementById('talvezResultado');
+            var provavelmenteResultado = document.getElementById('provavelmenteResultado');
+            var comCertezaResultado = document.getElementById('comCertezaResultado');
+
+            nuncaResultado.style.display = 'none';
+            talvezResultado.style.display = 'none';
+            provavelmenteResultado.style.display = 'none';
+            comCertezaResultado.style.display = 'none';
+
+            if (totalPontos < 150) {
+                nuncaResultado.style.display = 'block';
+            } else if (totalPontos <= 200) {
+                talvezResultado.style.display = 'block';
+            } else if (totalPontos <= 300) {
+                provavelmenteResultado.style.display = 'block';
+            } else {
+                comCertezaResultado.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
